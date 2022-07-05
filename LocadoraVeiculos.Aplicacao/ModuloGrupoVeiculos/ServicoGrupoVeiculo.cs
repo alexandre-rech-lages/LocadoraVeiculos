@@ -20,12 +20,29 @@ namespace LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos
 
         public ValidationResult Inserir(GrupoVeiculos arg)
         {
-            throw new NotImplementedException();
+            var resultadoValidacao = ValidarGrupoVeiculo(arg);
+
+            if (resultadoValidacao.IsValid)
+                repositorioGrupoVeiculos.Inserir(arg);
+
+            return resultadoValidacao;
+        }
+
+        private ValidationResult ValidarGrupoVeiculo(GrupoVeiculos arg)
+        {
+            ValidadorGrupoVeiculos validador = new ValidadorGrupoVeiculos();
+
+            return validador.Validate(arg); 
         }
 
         public ValidationResult Editar(GrupoVeiculos arg)
         {
-            throw new NotImplementedException();
+            var resultadoValidacao = ValidarGrupoVeiculo(arg);
+
+            if (resultadoValidacao.IsValid)
+                repositorioGrupoVeiculos.Editar(arg);
+
+            return resultadoValidacao;
         }
     }
 }
