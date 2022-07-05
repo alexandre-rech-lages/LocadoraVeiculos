@@ -7,13 +7,13 @@ using System.Data.SqlClient;
 namespace LocadoraVeiculos.Infra.BancoDados.Compartilhado
 {
     public abstract class RepositorioBase<T, TMapeador> : IRepositorio<T>
-        where T : EntidadeBase<T>        
+        where T : EntidadeBase<T>
         where TMapeador : MapeadorBase<T>, new()
 
     {
         protected string enderecoBanco =
             @"Data Source=(LOCALDB)\MSSQLLOCALDB;
-              Initial Catalog=BreakpointLocadoraDb;
+              Initial Catalog=DbTeste;
               Integrated Security=True";
 
         protected abstract string sqlInserir { get; }
@@ -71,6 +71,7 @@ namespace LocadoraVeiculos.Infra.BancoDados.Compartilhado
             comandoExclusao.ExecuteNonQuery();
             conexaoComBanco.Close();
         }
+
 
         public virtual T SelecionarPorId(int id)
         {
