@@ -13,7 +13,7 @@ namespace LocadoraVeiculos.Infra.BancoDados.Tests.ModuloCliente
 
         public RepositorioClienteEmBancoDadosTest()
         {
-            Db.ExecutarSql("DELETE FROM TBCLIENTE; DBCC CHECKIDENT (TBCLIENTE, RESEED, 0)");
+            //Db.ExecutarSql("DELETE FROM TBCLIENTE; DBCC CHECKIDENT (TBCLIENTE, RESEED, 0)");
             repositorioCliente = new RepositorioClienteEmBancoDados();
         }
 
@@ -57,9 +57,10 @@ namespace LocadoraVeiculos.Infra.BancoDados.Tests.ModuloCliente
         public void Deve_excluir_registro()
         {
             //arrange
-            var cliente = NovoCliente();
-            repositorioCliente.Inserir(cliente);
+            //var cliente = NovoCliente();
+            //repositorioCliente.Inserir(cliente);
 
+            var cliente = repositorioCliente.SelecionarPorId(1);
             //action
             repositorioCliente.Excluir(cliente);
 
