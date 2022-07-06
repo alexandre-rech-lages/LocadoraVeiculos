@@ -33,6 +33,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraVeiculos.Dominio.Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraVeiculos.Infra.BancoDados.Tests", "LocadoraVeiculos.Infra.BancoDados.Tests\LocadoraVeiculos.Infra.BancoDados.Tests.csproj", "{6017D9FF-40FC-4F7D-9D75-1C6A9126690A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logs", "Logs", "{8F474DB1-7B08-4544-8E67-8689DCF4E769}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraVeiculos.Infra.Logging", "LocadoraVeiculos.Infra.Logging\LocadoraVeiculos.Infra.Logging.csproj", "{D14C3FA7-7333-432E-B413-33FFE86E332C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,10 @@ Global
 		{6017D9FF-40FC-4F7D-9D75-1C6A9126690A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6017D9FF-40FC-4F7D-9D75-1C6A9126690A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6017D9FF-40FC-4F7D-9D75-1C6A9126690A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D14C3FA7-7333-432E-B413-33FFE86E332C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D14C3FA7-7333-432E-B413-33FFE86E332C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D14C3FA7-7333-432E-B413-33FFE86E332C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D14C3FA7-7333-432E-B413-33FFE86E332C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,6 +92,8 @@ Global
 		{86A90401-EA20-4920-A8FC-38852EBD662F} = {F581ACEA-D7DB-4DEF-BA16-E1E158D7F21E}
 		{5F92B603-B307-41E3-BB67-9ABA323B6F73} = {8B9C416F-BA2D-483F-8EF0-B5923E3D9EF8}
 		{6017D9FF-40FC-4F7D-9D75-1C6A9126690A} = {6234F382-A417-4D25-AA89-803AABCF9847}
+		{8F474DB1-7B08-4544-8E67-8689DCF4E769} = {5C8E2975-0B97-42BB-A322-6A5ABA6E5483}
+		{D14C3FA7-7333-432E-B413-33FFE86E332C} = {8F474DB1-7B08-4544-8E67-8689DCF4E769}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {069C4CEF-16E6-4D3B-B047-A33BAE665801}
