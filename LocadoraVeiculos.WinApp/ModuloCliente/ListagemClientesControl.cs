@@ -1,6 +1,7 @@
 ﻿using LocadoraVeiculos.Dominio.Compartilhado;
 using LocadoraVeiculos.Dominio.ModuloCliente;
 using LocadoraVeiculos.WinApp.Compartilhado;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -38,9 +39,9 @@ namespace LocadoraVeiculos.WinApp.ModuloCliente
             return colunas;
         }
 
-        public int ObtemIdClienteSelecionado()
+        public Guid ObtemIdClienteSelecionado()
         {
-            return grid.SelecionarId<int>();
+            return grid.SelecionarId<Guid>();
         }
 
         public void AtualizarRegistros(List<Cliente> Clientes)

@@ -8,13 +8,13 @@ namespace LocadoraVeiculos.Infra.BancoDados.Tests.ModuloTaxa
 {
 
     [TestClass]
-    public class RepositorioTaxaEmBancoDadosTest
+    public class RepositorioTaxaEmBancoDadosTest : BaseIntegrationTest
     {
         private RepositorioTaxaEmBancoDados repositorioTaxa;
 
         public RepositorioTaxaEmBancoDadosTest()
         {
-            Db.ExecutarSql("DELETE FROM TBTAXA; DBCC CHECKIDENT (TBTAXA, RESEED, 0)");
+            
             repositorioTaxa = new RepositorioTaxaEmBancoDados();
         }
 
@@ -86,7 +86,7 @@ namespace LocadoraVeiculos.Infra.BancoDados.Tests.ModuloTaxa
             Assert.AreEqual(taxa, registroEncontrado);
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void Deve_selecionar_todos_os_registros()
         {
             //arrange

@@ -20,14 +20,7 @@ namespace LocadoraVeiculos.WinApp.ModuloCliente
             set
             {
                 cliente = value;
-                if (cliente.Id != 0)
-                    PreencherDadosNaTela();
-                else
-                {
-                    HabilitarPessoaFisica();
-                    radioButtonPessoaFisica.Checked = true;
-                    DesabilitarPessoaJuridica();
-                }
+                PreencherDadosNaTela();               
             }
         }
 
@@ -50,7 +43,7 @@ namespace LocadoraVeiculos.WinApp.ModuloCliente
                 DialogResult = DialogResult.None;
             }
         }
-       
+
 
         private void radioButtonPessoaFisica_CheckedChanged(object sender, EventArgs e)
         {
@@ -120,7 +113,7 @@ namespace LocadoraVeiculos.WinApp.ModuloCliente
                 HabilitarPessoaJuridica();
                 txtCnpj.Text = cliente.Cnpj;
             }
-        }      
+        }
 
         private void HabilitarPessoaFisica()
         {
@@ -157,6 +150,6 @@ namespace LocadoraVeiculos.WinApp.ModuloCliente
         }
 
         #endregion
-            
+
     }
 }

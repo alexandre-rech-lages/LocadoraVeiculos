@@ -7,13 +7,12 @@ using System.Collections.Generic;
 namespace LocadoraVeiculos.Infra.BancoDados.Tests.ModuloCliente
 {
     [TestClass]
-    public class RepositorioClienteEmBancoDadosTest
+    public class RepositorioClienteEmBancoDadosTest : BaseIntegrationTest
     {
         private RepositorioClienteEmBancoDados repositorioCliente;
 
         public RepositorioClienteEmBancoDadosTest()
-        {
-            //Db.ExecutarSql("DELETE FROM TBCLIENTE; DBCC CHECKIDENT (TBCLIENTE, RESEED, 0)");
+        {           
             repositorioCliente = new RepositorioClienteEmBancoDados();
         }
 
@@ -57,10 +56,9 @@ namespace LocadoraVeiculos.Infra.BancoDados.Tests.ModuloCliente
         public void Deve_excluir_registro()
         {
             //arrange
-            //var cliente = NovoCliente();
-            //repositorioCliente.Inserir(cliente);
+            var cliente = NovoCliente();
+            repositorioCliente.Inserir(cliente);
 
-            var cliente = repositorioCliente.SelecionarPorId(1);
             //action
             repositorioCliente.Excluir(cliente);
 
@@ -86,7 +84,7 @@ namespace LocadoraVeiculos.Infra.BancoDados.Tests.ModuloCliente
             Assert.AreEqual(cliente, registroEncontrado);
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void Deve_selecionar_todos_os_registros()
         {
             //arrange

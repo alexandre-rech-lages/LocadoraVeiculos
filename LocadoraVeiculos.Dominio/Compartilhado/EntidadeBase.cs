@@ -1,7 +1,14 @@
-﻿namespace LocadoraVeiculos.Dominio.Compartilhado
+﻿using System;
+
+namespace LocadoraVeiculos.Dominio.Compartilhado
 {
     public abstract class EntidadeBase<T>
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
+
+        public EntidadeBase()
+        {
+            Id = Guid.NewGuid();
+        }
     }
 }

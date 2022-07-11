@@ -7,13 +7,12 @@ using System.Collections.Generic;
 namespace LocadoraVeiculos.Infra.BancoDados.Tests.ModuloFuncionario
 {
     [TestClass]
-    public class RepositorioFuncionarioEmBancoDadosTest
+    public class RepositorioFuncionarioEmBancoDadosTest : BaseIntegrationTest
     {
         private RepositorioFuncionarioEmBancoDados repositorioFuncionario;
 
         public RepositorioFuncionarioEmBancoDadosTest()
-        {
-            Db.ExecutarSql("DELETE FROM TBFUNCIONARIO; DBCC CHECKIDENT (TBFUNCIONARIO, RESEED, 0)");
+        {            
             repositorioFuncionario = new RepositorioFuncionarioEmBancoDados();
         }
 
@@ -69,7 +68,7 @@ namespace LocadoraVeiculos.Infra.BancoDados.Tests.ModuloFuncionario
             Assert.IsNull(registroEncontrado);
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void Deve_selecionar_todos_os_registros()
         {
             //arrange

@@ -15,7 +15,7 @@ namespace LocadoraVeiculos.Infra.BancoDados.ModuloGrupoVeiculos
 
         public override GrupoVeiculos ConverterRegistro(SqlDataReader leitorRegistro)
         {
-            var id = Convert.ToInt32(leitorRegistro["GRUPOVEICULO_ID"]);
+            var id = Guid.Parse(leitorRegistro["GRUPOVEICULO_ID"].ToString());
             var nome = Convert.ToString(leitorRegistro["GRUPOVEICULO_NOME"]);
 
             var g = new GrupoVeiculos();

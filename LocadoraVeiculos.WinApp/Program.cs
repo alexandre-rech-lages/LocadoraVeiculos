@@ -14,7 +14,7 @@ namespace LocadoraVeiculos.WinApp
         /// </summary>
         [STAThread]
         static void Main()
-        {            
+        {
             ConfiguracaoLogsLocadora.ConfigurarEscritaLogs();
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();

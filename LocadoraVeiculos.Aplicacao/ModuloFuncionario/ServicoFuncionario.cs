@@ -24,14 +24,14 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
             if (resultadoValidacao.IsValid)
             {
                 repositorioFuncionario.Inserir(funcionario);
-                Log.Logger.Debug("Funcionário {FuncionarioNome} inserido com sucesso", funcionario.Nome);
+                Log.Logger.Information("Funcionário {FuncionarioId} inserido com sucesso", funcionario.Id);
             }
             else
             {
                 foreach (var erro in resultadoValidacao.Errors)
                 {
-                    Log.Logger.Warning("Falha ao tentar inserir um Funcionário {FuncionarioNome} - {Motivo}", 
-                        funcionario.Nome, erro.ErrorMessage);
+                    Log.Logger.Warning("Falha ao tentar inserir o Funcionário {FuncionarioId} - {Motivo}", 
+                        funcionario.Id, erro.ErrorMessage);
                 }
             }
 
@@ -40,10 +40,23 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
 
         public ValidationResult Editar(Funcionario funcionario)
         {
+            Log.Logger.Debug("Tentando editar funcionário... {@f}", funcionario);
+
             ValidationResult resultadoValidacao = Validar(funcionario);
 
             if (resultadoValidacao.IsValid)
+            {
                 repositorioFuncionario.Editar(funcionario);
+                Log.Logger.Debug("Funcionário {FuncionarioId} editado com sucesso", funcionario.Id);
+            }
+            else
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao tentar editar o Funcionário {FuncionarioId} - {Motivo}",
+                        funcionario.Id, erro.ErrorMessage);
+                }
+            }
 
             return resultadoValidacao;
         }
