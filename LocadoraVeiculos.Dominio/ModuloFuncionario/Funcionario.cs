@@ -8,10 +8,11 @@ namespace LocadoraVeiculos.Dominio.ModuloFuncionario
         public Funcionario()
         {
             this.EstaAtivo = true;
+            DataAdmissao = DateTime.Now;
         }
 
         public Funcionario(string nome, string login, string senha,
-            DateTime dataAdmissao, decimal salario, bool ehAdmin, bool estaAtivo)
+            DateTime dataAdmissao, decimal salario, bool ehAdmin, bool estaAtivo):this()
         {
             Nome = nome;
             Usuario = login;

@@ -1,5 +1,7 @@
-﻿using Serilog;
+﻿using Microsoft.Extensions.Configuration;
+using Serilog;
 using System;
+using System.IO;
 
 namespace LocadoraVeiculos.Infra.Logging
 {
@@ -7,9 +9,19 @@ namespace LocadoraVeiculos.Infra.Logging
     {
         public static void ConfigurarEscritaLogs()
         {
+            var configuracao = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("ConfiguracaoAplicacao.json")
+                .Build();
+
+            var diretorioSaida = configuracao
+                .GetSection("ConfiguracaoLogs")
+                .GetSection("DiretorioSaida")
+                .Value;
+
             Log.Logger = new LoggerConfiguration()
-               .MinimumLevel.Debug()
-               .WriteTo.File("logs/log.txt",
+                   .MinimumLevel.Debug()
+                   .WriteTo.File(diretorioSaida + "/log.txt",
                rollingInterval: RollingInterval.Day,
                outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}")
                .CreateLogger();

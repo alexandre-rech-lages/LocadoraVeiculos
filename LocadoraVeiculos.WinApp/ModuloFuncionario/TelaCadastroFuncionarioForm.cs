@@ -12,7 +12,6 @@ namespace LocadoraVeiculos.WinApp.ModuloFuncionario
         public TelaCadastroFuncionarioForm()
         {
             InitializeComponent();
-            DefinirDataAdmissaoMaxima();
         }
 
         public Funcionario Funcionario
@@ -21,13 +20,12 @@ namespace LocadoraVeiculos.WinApp.ModuloFuncionario
             set
             {
                 funcionario = value;
-                if (funcionario.Id != 0)
-                    PreencherDadosNaTela();
+                PreencherDadosNaTela();
             }
         }
 
         public Func<Funcionario, ValidationResult> GravarRegistro { get; set; }
-            
+
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
