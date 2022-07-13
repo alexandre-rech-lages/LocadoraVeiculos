@@ -9,14 +9,11 @@ namespace LocadoraVeiculos.WinApp.ModuloFuncionario
 {
     public class ControladorFuncionario : ControladorBase
     {
-        private readonly IRepositorioFuncionario repositorioFuncionario;
         private ListagemFuncionarioControl listagemFuncionarios;
         private readonly ServicoFuncionario servicoFuncionario;
 
-        public ControladorFuncionario(IRepositorioFuncionario repositorioFuncionario,
-            ServicoFuncionario servicoFuncionario)
+        public ControladorFuncionario(ServicoFuncionario servicoFuncionario)
         {
-            this.repositorioFuncionario = repositorioFuncionario;
             this.servicoFuncionario = servicoFuncionario;
         }
 
@@ -41,11 +38,20 @@ namespace LocadoraVeiculos.WinApp.ModuloFuncionario
             if (id == Guid.Empty)
             {
                 MessageBox.Show("Selecione um funcionário primeiro",
-                "Edição de Funcionário", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    "Edição de Funcionário", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
-            var funcionarioSelecionado = repositorioFuncionario.SelecionarPorId(id);
+            var resultado = servicoFuncionario.SelecionarPorId(id);
+
+            if (resultado.IsFailed)
+            {
+                MessageBox.Show(resultado.Errors[0].Message,
+                    "Edição de Funcionário", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var funcionarioSelecionado = resultado.Value;
 
             var tela = new TelaCadastroFuncionarioForm();
 
@@ -55,6 +61,7 @@ namespace LocadoraVeiculos.WinApp.ModuloFuncionario
 
             if (tela.ShowDialog() == DialogResult.OK)
                 CarregarFuncionarios();
+
         }
 
         public override void Excluir()
@@ -68,13 +75,27 @@ namespace LocadoraVeiculos.WinApp.ModuloFuncionario
                 return;
             }
 
-            var funcionarioSelecionado = repositorioFuncionario.SelecionarPorId(id);
+            var resultadoSelecao = servicoFuncionario.SelecionarPorId(id);
+
+            if (resultadoSelecao.IsFailed)
+            {
+                MessageBox.Show(resultadoSelecao.Errors[0].Message,
+                    "Exclusão de Funcionário", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var funcionarioSelecionado = resultadoSelecao.Value;
 
             if (MessageBox.Show("Deseja realmente excluir o funcionário?", "Exclusão de Funcionário",
                  MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                repositorioFuncionario.Excluir(funcionarioSelecionado);
-                CarregarFuncionarios();
+                var resultadoExclusao = servicoFuncionario.Excluir(funcionarioSelecionado);
+
+                if (resultadoExclusao.IsSuccess)
+                    CarregarFuncionarios();
+                else
+                    MessageBox.Show(resultadoExclusao.Errors[0].Message,
+                        "Exclusão de Funcionário", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -95,9 +116,21 @@ namespace LocadoraVeiculos.WinApp.ModuloFuncionario
 
         private void CarregarFuncionarios()
         {
-            List<Funcionario> funcionarios = repositorioFuncionario.SelecionarTodos();
-            listagemFuncionarios.AtualizarRegistros(funcionarios);
-            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {funcionarios.Count} funcionário(s)");
+            var resultado = servicoFuncionario.SelecionarTodos();
+
+            if (resultado.IsSuccess)
+            {
+                List<Funcionario> funcionarios = resultado.Value;
+
+                listagemFuncionarios.AtualizarRegistros(funcionarios);
+
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {funcionarios.Count} funcionário(s)");
+            }
+            else
+            {
+                MessageBox.Show(resultado.Errors[0].Message, "Exclusão de Funcionário",
+                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

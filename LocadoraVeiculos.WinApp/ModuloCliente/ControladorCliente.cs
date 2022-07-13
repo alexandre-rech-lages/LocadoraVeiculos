@@ -73,8 +73,13 @@ namespace LocadoraVeiculos.WinApp.ModuloCliente
             if (MessageBox.Show("Deseja realmente excluir o cliente?", "Exclusão de Cliente",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                repositorioCliente.Excluir(clienteSelecionado);
-                CarregarClientes();
+                var resultadoExclusao = servicoCliente.Excluir(clienteSelecionado);
+
+                if (resultadoExclusao.IsSuccess)
+                    CarregarClientes();
+                else
+                    MessageBox.Show(resultadoExclusao.Errors[0].Message,
+                        "Exclusão de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
