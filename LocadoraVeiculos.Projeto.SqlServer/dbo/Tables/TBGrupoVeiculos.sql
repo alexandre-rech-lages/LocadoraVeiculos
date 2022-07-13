@@ -1,8 +1,5 @@
 ﻿CREATE TABLE [dbo].[TBGrupoVeiculos] (
     [Id]   UNIQUEIDENTIFIER NOT NULL,
-    [Nome] VARCHAR (300)    NOT NULL,
-    CONSTRAINT [PK_TBGrupoVeiculos_1] PRIMARY KEY CLUSTERED ([Id] ASC)
+    [Nome] VARCHAR (300)    NOT NULL
 );
-
-
 
