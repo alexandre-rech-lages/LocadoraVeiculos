@@ -1,16 +1,16 @@
-﻿namespace LocadoraVeiculos.WinApp.ModuloFuncionario
+﻿namespace Locadora_Veiculos.WinApp.ModuloCondutor
 {
-    partial class ListagemFuncionarioControl
+    partial class ListagemCondutoresControl
     {
         /// <summary> 
-        /// Variável de designer necessária.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary> 
-        /// Limpar os recursos que estão sendo usados.
+        /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true se for necessário descartar os recursos gerenciados; caso contrário, false.</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,11 +20,11 @@
             base.Dispose(disposing);
         }
 
-        #region Código gerado pelo Designer de Componentes
+        #region Component Designer generated code
 
         /// <summary> 
-        /// Método necessário para suporte ao Designer - não modifique 
-        /// o conteúdo deste método com o editor de código.
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -39,17 +39,16 @@
             this.grid.Location = new System.Drawing.Point(0, 0);
             this.grid.Name = "grid";
             this.grid.RowTemplate.Height = 25;
-            this.grid.Size = new System.Drawing.Size(501, 325);
-            this.grid.TabIndex = 1;
+            this.grid.Size = new System.Drawing.Size(351, 267);
+            this.grid.TabIndex = 0;
             // 
-            // ListagemFuncionarioControl
+            // ListagemCondutoresControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.grid);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "ListagemFuncionarioControl";
-            this.Size = new System.Drawing.Size(501, 325);
+            this.Name = "ListagemCondutoresControl";
+            this.Size = new System.Drawing.Size(351, 267);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.ResumeLayout(false);
 

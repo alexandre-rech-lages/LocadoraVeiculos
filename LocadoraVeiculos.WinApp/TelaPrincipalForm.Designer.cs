@@ -42,6 +42,7 @@
             this.statusStripRodape = new System.Windows.Forms.StatusStrip();
             this.labelRodape = new System.Windows.Forms.ToolStripStatusLabel();
             this.panelRegistros = new System.Windows.Forms.Panel();
+            this.condutoresMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.toolbox.SuspendLayout();
             this.statusStripRodape.SuspendLayout();
@@ -63,7 +64,8 @@
             this.clientesMenuItem,
             this.funcionariosMenuItem,
             this.grupoVeiculosMenuItem,
-            this.taxasMenuItem});
+            this.taxasMenuItem,
+            this.condutoresMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.cadastrosToolStripMenuItem.Text = "Cadastros";
@@ -188,6 +190,13 @@
             this.panelRegistros.Size = new System.Drawing.Size(800, 363);
             this.panelRegistros.TabIndex = 3;
             // 
+            // condutoresMenuItem
+            // 
+            this.condutoresMenuItem.Name = "condutoresMenuItem";
+            this.condutoresMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.condutoresMenuItem.Text = "Condutores";
+            this.condutoresMenuItem.Click += new System.EventHandler(this.condutoresMenuItem_Click);
+            // 
             // TelaPrincipalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -230,5 +239,6 @@
         private System.Windows.Forms.ToolStripButton btnEditar;
         private System.Windows.Forms.ToolStripButton btnExcluir;
         private System.Windows.Forms.ToolStripLabel labelTipoCadastro;
+        private System.Windows.Forms.ToolStripMenuItem condutoresMenuItem;
     }
 }

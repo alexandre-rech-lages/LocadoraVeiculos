@@ -1,5 +1,4 @@
 ﻿using LocadoraVeiculos.Dominio.ModuloCliente;
-using LocadoraVeiculos.Infra.BancoDados.Compartilhado;
 using LocadoraVeiculos.Infra.BancoDados.ModuloCliente;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
@@ -12,7 +11,7 @@ namespace LocadoraVeiculos.Infra.BancoDados.Tests.ModuloCliente
         private RepositorioClienteEmBancoDados repositorioCliente;
 
         public RepositorioClienteEmBancoDadosTest()
-        {           
+        {
             repositorioCliente = new RepositorioClienteEmBancoDados();
         }
 
@@ -105,14 +104,14 @@ namespace LocadoraVeiculos.Infra.BancoDados.Tests.ModuloCliente
                 posicao++;
             }
 
-        }      
+        }
 
         #region MÉTODOS PRIVADOS
 
         private Cliente NovoCliente()
         {
             Cliente c = new Cliente("João da Silva", "(49) 98888-9999", "joao@gmail.com",
-                TipoCliente.PessoaFisica, "013.987.765-09", null, "123456789", 2,
+                TipoCliente.PessoaFisica, "013.987.765-09", null, 2,
                 "Rua das laranjeiras", "centro", "São Paulo", "SP");
 
             return c;
@@ -121,15 +120,15 @@ namespace LocadoraVeiculos.Infra.BancoDados.Tests.ModuloCliente
         private List<Cliente> NovosClientesFisicos()
         {
             Cliente c1 = new Cliente("João da Silva", "(49) 98888-9999", "joao@gmail.com",
-                TipoCliente.PessoaFisica, "063.987.765-09", null, "123456789", 2,
+                TipoCliente.PessoaFisica, "063.987.765-09", null, 2,
                 "Rua das laranjeiras", "centro", "São Paulo", "SP");
 
             Cliente c2 = new Cliente("Alexandre Rech", "(49) 98888-9555", "alexandre@gmail.com",
-                TipoCliente.PessoaFisica, "047.967.762-08", null, "523454345", 2,
+                TipoCliente.PessoaFisica, "047.967.762-08", null, 2,
                 "Rua das bananeirass", "centro", "São Paulo", "SP");
 
             Cliente c3 = new Cliente("Tiago Santini", "(49) 98655-9002", "tiago@gmail.com",
-                TipoCliente.PessoaFisica, "013.987.763-07", null, "987654321", 2,
+                TipoCliente.PessoaFisica, "013.987.763-07", null, 2,
                 "Rua das macieiras", "centro", "São Paulo", "SP");
 
             var lista = new List<Cliente>();

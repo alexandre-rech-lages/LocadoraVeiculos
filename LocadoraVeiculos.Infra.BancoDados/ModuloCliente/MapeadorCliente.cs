@@ -13,7 +13,6 @@ namespace LocadoraVeiculos.Infra.BancoDados.ModuloCliente
             comando.Parameters.AddWithValue("NOME", registro.Nome);
             comando.Parameters.AddWithValue("EMAIL", registro.Email);
             comando.Parameters.AddWithValue("TELEFONE", registro.Telefone);
-            comando.Parameters.AddWithValue("CNH", registro.Cnh);
             comando.Parameters.AddWithValue("ESTADO", registro.Estado);
             comando.Parameters.AddWithValue("CIDADE", registro.Cidade);
             comando.Parameters.AddWithValue("BAIRRO", registro.Bairro);
@@ -33,7 +32,6 @@ namespace LocadoraVeiculos.Infra.BancoDados.ModuloCliente
             var nome = Convert.ToString(leitorRegistro["CLIENTE_NOME"]);
             var email = Convert.ToString(leitorRegistro["CLIENTE_EMAIL"]);
             var telefone = Convert.ToString(leitorRegistro["CLIENTE_TELEFONE"]);
-            var cnh = Convert.ToString(leitorRegistro["CLIENTE_CNH"]);
             var estado = Convert.ToString(leitorRegistro["CLIENTE_ESTADO"]);
             var cidade = Convert.ToString(leitorRegistro["CLIENTE_CIDADE"]);
             var bairro = Convert.ToString(leitorRegistro["CLIENTE_BAIRRO"]);
@@ -48,7 +46,6 @@ namespace LocadoraVeiculos.Infra.BancoDados.ModuloCliente
                 Nome = nome,
                 Email = email,
                 Telefone = telefone,
-                Cnh = cnh,
                 Estado = estado,
                 Cidade = cidade,
                 Rua = rua,

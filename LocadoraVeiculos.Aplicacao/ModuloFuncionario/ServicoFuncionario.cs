@@ -30,7 +30,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
             {
                 foreach (var erro in resultadoValidacao.Errors)
                 {
-                    Log.Logger.Warning("Falha ao tentar inserir o Funcionário {FuncionarioId} - {Motivo}", 
+                    Log.Logger.Warning("Falha ao tentar inserir o Funcionário {FuncionarioId} - {Motivo}",
                         funcionario.Id, erro.ErrorMessage);
                 }
             }

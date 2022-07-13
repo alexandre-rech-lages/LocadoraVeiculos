@@ -1,8 +1,11 @@
-﻿using LocadoraVeiculos.Aplicacao.ModuloCliente;
+﻿using Locadora_Veiculos.WinApp.ModuloCondutor;
+using LocadoraVeiculos.Aplicacao.ModuloCliente;
+using LocadoraVeiculos.Aplicacao.ModuloCondutor;
 using LocadoraVeiculos.Aplicacao.ModuloFuncionario;
 using LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos;
 using LocadoraVeiculos.Aplicacao.ModuloTaxa;
 using LocadoraVeiculos.Infra.BancoDados.ModuloCliente;
+using LocadoraVeiculos.Infra.BancoDados.ModuloCondutor;
 using LocadoraVeiculos.Infra.BancoDados.ModuloFuncionario;
 using LocadoraVeiculos.Infra.BancoDados.ModuloGrupoVeiculos;
 using LocadoraVeiculos.Infra.BancoDados.ModuloTaxa;
@@ -57,6 +60,11 @@ namespace LocadoraVeiculos.WinApp
         }
 
         private void taxasMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+        }
+
+        private void condutoresMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
@@ -141,18 +149,24 @@ namespace LocadoraVeiculos.WinApp
             var repositorioGrupoVeiculos = new RepositorioGrupoVeiculosEmBancoDados();
             var repositorioTaxa = new RepositorioTaxaEmBancoDados();
             var repositorioFuncionario = new RepositorioFuncionarioEmBancoDados();
+            var repositorioCondutor = new RepositorioCondutorEmBancoDados();
+
 
             var servicoFuncionario = new ServicoFuncionario(repositorioFuncionario);
             var servicoCliente = new ServicoCliente(repositorioCliente);
             var servicoGrupoVeiculo = new ServicoGrupoVeiculo(repositorioGrupoVeiculos);
             var servicoTaxa = new ServicoTaxa(repositorioTaxa);
-                        
+            var servicoCondutor = new ServicoCondutor(repositorioCondutor);
+
             controladores = new Dictionary<string, ControladorBase>();
 
             controladores.Add("Clientes", new ControladorCliente(repositorioCliente, servicoCliente));
             controladores.Add("Grupos de veículos", new ControladorGrupoVeiculos(repositorioGrupoVeiculos, servicoGrupoVeiculo));
             controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa, servicoTaxa));
             controladores.Add("Funcionários", new ControladorFuncionario(repositorioFuncionario, servicoFuncionario));
+            controladores.Add("Condutores", new ControladorCondutor(repositorioCondutor, repositorioCliente, servicoCondutor));
         }
+
+
     }
 }

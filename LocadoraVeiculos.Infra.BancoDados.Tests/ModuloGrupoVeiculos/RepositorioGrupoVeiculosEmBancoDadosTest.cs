@@ -1,5 +1,4 @@
 ﻿using LocadoraVeiculos.Dominio.ModuloGrupoVeiculos;
-using LocadoraVeiculos.Infra.BancoDados.Compartilhado;
 using LocadoraVeiculos.Infra.BancoDados.ModuloGrupoVeiculos;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
@@ -12,7 +11,7 @@ namespace LocadoraVeiculos.Infra.BancoDados.Tests.ModuloGrupoVeiculos
         private RepositorioGrupoVeiculosEmBancoDados repositorioGrupoVeiculos;
 
         public RepositorioGrupoVeiculosEmBancoDadosTest()
-        {            
+        {
             repositorioGrupoVeiculos = new RepositorioGrupoVeiculosEmBancoDados();
         }
 

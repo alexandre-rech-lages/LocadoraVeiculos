@@ -1,5 +1,4 @@
 ﻿using LocadoraVeiculos.Dominio.ModuloFuncionario;
-using LocadoraVeiculos.Infra.BancoDados.Compartilhado;
 using LocadoraVeiculos.Infra.BancoDados.ModuloFuncionario;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
@@ -12,7 +11,7 @@ namespace LocadoraVeiculos.Infra.BancoDados.Tests.ModuloFuncionario
         private RepositorioFuncionarioEmBancoDados repositorioFuncionario;
 
         public RepositorioFuncionarioEmBancoDadosTest()
-        {            
+        {
             repositorioFuncionario = new RepositorioFuncionarioEmBancoDados();
         }
 

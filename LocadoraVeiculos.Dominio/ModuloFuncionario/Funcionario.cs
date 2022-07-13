@@ -12,7 +12,7 @@ namespace LocadoraVeiculos.Dominio.ModuloFuncionario
         }
 
         public Funcionario(string nome, string login, string senha,
-            DateTime dataAdmissao, decimal salario, bool ehAdmin, bool estaAtivo):this()
+            DateTime dataAdmissao, decimal salario, bool ehAdmin, bool estaAtivo) : this()
         {
             Nome = nome;
             Usuario = login;

@@ -2,10 +2,6 @@
 using LocadoraVeiculos.Dominio.ModuloTaxa;
 using LocadoraVeiculos.Infra.BancoDados.ModuloTaxa;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraVeiculos.Aplicacao.ModuloTaxa
 {
@@ -20,7 +16,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloTaxa
 
         public ValidationResult Inserir(Taxa arg)
         {
-            throw new NotImplementedException();
+            return new ValidationResult();
         }
 
         public ValidationResult Editar(Taxa arg)

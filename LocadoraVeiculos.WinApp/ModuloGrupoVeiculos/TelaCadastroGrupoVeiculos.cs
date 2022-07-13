@@ -34,6 +34,7 @@ namespace LocadoraVeiculos.WinApp.ModuloGrupoVeiculos
             grupoVeiculos.Nome = txtNome.Text;
 
             var resultadoValidacao = GravarRegistro(grupoVeiculos);
+
             if (resultadoValidacao.IsValid == false)
             {
                 string erro = resultadoValidacao.Errors[0].ErrorMessage;

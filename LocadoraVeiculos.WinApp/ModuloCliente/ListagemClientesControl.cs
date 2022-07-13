@@ -52,7 +52,7 @@ namespace LocadoraVeiculos.WinApp.ModuloCliente
                 var tipo = cliente.TipoCliente.GetDescription();
 
                 grid.Rows.Add(cliente.Id, cliente.Nome, cliente.Telefone, cliente.Email,
-                              tipo, cliente.Cpf, cliente.Cnpj, cliente.Cnh,
+                              tipo, cliente.Cpf, cliente.Cnpj,
                               cliente.Estado, cliente.Cidade, cliente.Bairro, cliente.Rua, cliente.Numero);
             }
         }

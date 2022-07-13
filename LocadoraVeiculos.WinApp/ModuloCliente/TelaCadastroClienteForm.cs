@@ -20,17 +20,37 @@ namespace LocadoraVeiculos.WinApp.ModuloCliente
             set
             {
                 cliente = value;
-                PreencherDadosNaTela();               
+                txtNome.Text = cliente.Nome;
+                txtEmail.Text = cliente.Email;
+                txtTelefone.Text = cliente.Telefone;
+                txtCpf.Text = cliente.Cpf;
+                txtCnpj.Text = cliente.Cnpj;
+                txtNumero.Text = Convert.ToString(cliente.Numero);
+                txtRua.Text = cliente.Rua;
+                txtBairro.Text = cliente.Bairro;
+                txtCidade.Text = cliente.Cidade;
+                comboBoxEstado.SelectedItem = cliente.Estado;
+                PreencherTipoCliente();
             }
         }
 
         public Func<Cliente, ValidationResult> GravarRegistro { get; set; }
 
-        #region EVENTOS
-
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            ObterDadosTela();
+            cliente.Nome = txtNome.Text;
+            cliente.Email = txtEmail.Text;
+            cliente.Telefone = txtTelefone.Text;
+            cliente.Cpf = txtCpf.Text;
+            cliente.Cnpj = txtCnpj.Text;
+            cliente.Rua = txtRua.Text;
+            cliente.Bairro = txtBairro.Text;
+            cliente.Cidade = txtCidade.Text;
+            cliente.TipoCliente = ObterTipoCliente();
+            if (string.IsNullOrEmpty(txtNumero.Text) == false)
+                cliente.Numero = int.Parse(txtNumero.Text);
+            if (comboBoxEstado.SelectedIndex != -1)
+                cliente.Estado = comboBoxEstado.SelectedItem.ToString();
 
             var resultadoValidacao = GravarRegistro(cliente);
 
@@ -49,52 +69,12 @@ namespace LocadoraVeiculos.WinApp.ModuloCliente
         {
             HabilitarPessoaFisica();
             DesabilitarPessoaJuridica();
-
-
         }
 
         private void radioButtonPessoaJuridica_CheckedChanged(object sender, EventArgs e)
         {
             HabilitarPessoaJuridica();
             DesabilitarPessoaFisica();
-        }
-
-        #endregion
-
-        #region MÉTODOS PRIVADOS
-
-        private void ObterDadosTela()
-        {
-            cliente.Nome = txtNome.Text;
-            cliente.Email = txtEmail.Text;
-            cliente.Telefone = txtTelefone.Text;
-            cliente.Cpf = txtCpf.Text;
-            cliente.Cnpj = txtCnpj.Text;
-            cliente.Cnh = txtCnh.Text;
-            cliente.Rua = txtRua.Text;
-            cliente.Bairro = txtBairro.Text;
-            cliente.Cidade = txtCidade.Text;
-            cliente.TipoCliente = ObterTipoCliente();
-            if (string.IsNullOrEmpty(txtNumero.Text) == false)
-                cliente.Numero = int.Parse(txtNumero.Text);
-            if (comboBoxEstado.SelectedIndex != -1)
-                cliente.Estado = comboBoxEstado.SelectedItem.ToString();
-        }
-
-        private void PreencherDadosNaTela()
-        {
-            txtNome.Text = cliente.Nome;
-            txtEmail.Text = cliente.Email;
-            txtTelefone.Text = cliente.Telefone;
-            txtCpf.Text = cliente.Cpf;
-            txtCnpj.Text = cliente.Cnpj;
-            txtCnh.Text = cliente.Cnh;
-            txtNumero.Text = Convert.ToString(cliente.Numero);
-            txtRua.Text = cliente.Rua;
-            txtBairro.Text = cliente.Bairro;
-            txtCidade.Text = cliente.Cidade;
-            comboBoxEstado.SelectedItem = cliente.Estado;
-            PreencherTipoCliente();
         }
 
         private void PreencherTipoCliente()
@@ -143,13 +123,11 @@ namespace LocadoraVeiculos.WinApp.ModuloCliente
 
             if (radioButtonPessoaFisica.Checked && string.IsNullOrEmpty(txtCpf.Text) == false)
                 retorno = TipoCliente.PessoaFisica;
+
             else if (radioButtonPessoaJuridica.Checked && string.IsNullOrEmpty(txtCnpj.Text) == false)
                 retorno = TipoCliente.PessoaJuridica;
 
             return retorno;
         }
-
-        #endregion
-
     }
 }

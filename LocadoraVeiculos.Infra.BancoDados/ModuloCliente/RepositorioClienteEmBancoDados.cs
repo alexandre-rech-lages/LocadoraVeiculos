@@ -17,8 +17,7 @@ namespace LocadoraVeiculos.Infra.BancoDados.ModuloCliente
                     [DOCUMENTO],
                     [EMAIL],
                     [TELEFONE],
-                    [TIPO_CLIENTE],
-                    [CNH],
+                    [TIPO_CLIENTE],                
                     [ESTADO],
                     [CIDADE],
                     [BAIRRO],
@@ -32,8 +31,7 @@ namespace LocadoraVeiculos.Infra.BancoDados.ModuloCliente
                     @DOCUMENTO, 
                     @EMAIL,
                     @TELEFONE,
-                    @TIPO_CLIENTE,
-                    @CNH,
+                    @TIPO_CLIENTE,                   
                     @ESTADO,
                     @CIDADE,
                     @BAIRRO,
@@ -48,8 +46,7 @@ namespace LocadoraVeiculos.Infra.BancoDados.ModuloCliente
                     [DOCUMENTO] = @DOCUMENTO,
                     [EMAIL] = @EMAIL,
                     [TELEFONE] = @TELEFONE,
-                    [TIPO_CLIENTE] = @TIPO_CLIENTE,
-                    [CNH] = @CNH,
+                    [TIPO_CLIENTE] = @TIPO_CLIENTE,                    
                     [ESTADO] = @ESTADO,
                     [CIDADE] = @CIDADE,
                     [BAIRRO] = @BAIRRO,
@@ -69,8 +66,7 @@ namespace LocadoraVeiculos.Infra.BancoDados.ModuloCliente
                 [DOCUMENTO] CLIENTE_DOCUMENTO,
                 [EMAIL] CLIENTE_EMAIL,
                 [TELEFONE] CLIENTE_TELEFONE,
-                [TIPO_CLIENTE] CLIENTE_TIPO_CLIENTE,
-                [CNH] CLIENTE_CNH,
+                [TIPO_CLIENTE] CLIENTE_TIPO_CLIENTE,                
                 [ESTADO] CLIENTE_ESTADO,
                 [CIDADE] CLIENTE_CIDADE,
                 [BAIRRO] CLIENTE_BAIRRO,
@@ -88,42 +84,14 @@ namespace LocadoraVeiculos.Infra.BancoDados.ModuloCliente
                 [DOCUMENTO] CLIENTE_DOCUMENTO,
                 [EMAIL] CLIENTE_EMAIL,
                 [TELEFONE] CLIENTE_TELEFONE,
-                [TIPO_CLIENTE] CLIENTE_TIPO_CLIENTE,
-                [CNH] CLIENTE_CNH,
+                [TIPO_CLIENTE] CLIENTE_TIPO_CLIENTE,                
                 [ESTADO] CLIENTE_ESTADO,
                 [CIDADE] CLIENTE_CIDADE,
                 [BAIRRO] CLIENTE_BAIRRO,
                 [RUA] CLIENTE_RUA,
                 [NUMERO] CLIENTE_NUMERO
             FROM
-                [TBCLIENTE]";
-
-
-        public override void Excluir(Cliente registro)
-        {
-            try
-            {
-                base.Excluir(registro);
-            }
-            catch (SqlException ex)
-            {
-                if (ex.Message != null && ex.Message.Contains("FK_TBCondutor_TBCliente"))
-                {
-                    var msgErro = $"O Cliente {registro.Nome} [id:{registro.Id}] está relacionado com um condutor e não pode ser removido";
-                    throw new RegistroNaoPodeSerExcluidoException(msgErro, ex);
-                }
-
-                throw;
-            }
-        }
-
-        public class RegistroNaoPodeSerExcluidoException : ApplicationException
-        {
-            public RegistroNaoPodeSerExcluidoException(string mensagem , Exception exception) 
-                : base("O Registro está referenciado com outro registro da aplicação e não pode ser removido", exception)
-            {
-            }
-        }
+                [TBCLIENTE]";       
 
     }
 }

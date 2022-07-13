@@ -4,8 +4,6 @@ namespace LocadoraVeiculos.Dominio.ModuloGrupoVeiculos
 {
     public class GrupoVeiculos : EntidadeBase<GrupoVeiculos>
     {
-        #region CONSTRUTORES
-
         public GrupoVeiculos()
         {
 
@@ -16,13 +14,7 @@ namespace LocadoraVeiculos.Dominio.ModuloGrupoVeiculos
             Nome = nome;
         }
 
-        #endregion
-
-        #region PROPS
-
         public string Nome { get; set; }
-
-        #endregion
 
         public override string ToString()
         {
@@ -39,6 +31,11 @@ namespace LocadoraVeiculos.Dominio.ModuloGrupoVeiculos
             return
                 g.Id.Equals(Id) &&
                 g.Nome.Equals(Nome);
+        }
+
+        public GrupoVeiculos Clone()
+        {
+            return MemberwiseClone() as GrupoVeiculos;
         }
     }
 }

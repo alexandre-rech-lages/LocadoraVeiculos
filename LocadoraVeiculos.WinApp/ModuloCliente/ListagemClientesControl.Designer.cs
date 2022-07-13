@@ -40,7 +40,7 @@
             this.grid.Name = "grid";
             this.grid.RowTemplate.Height = 25;
             this.grid.Size = new System.Drawing.Size(385, 303);
-            this.grid.TabIndex = 0;
+            this.grid.TabIndex = 1;
             // 
             // ListagemClientesControl
             // 

@@ -1,5 +1,4 @@
-﻿using FluentValidation;
-using LocadoraVeiculos.Dominio.Compartilhado;
+﻿using LocadoraVeiculos.Dominio.Compartilhado;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ namespace LocadoraVeiculos.Infra.BancoDados.Compartilhado
 
     {
         private readonly string enderecoBanco;
-        
+
         public RepositorioBase()
         {
             var configuracao = new ConfigurationBuilder()
@@ -23,7 +22,7 @@ namespace LocadoraVeiculos.Infra.BancoDados.Compartilhado
                 .Build();
 
             enderecoBanco = configuracao.GetConnectionString("SqlServer");
-        }        
+        }
 
         protected abstract string sqlInserir { get; }
 

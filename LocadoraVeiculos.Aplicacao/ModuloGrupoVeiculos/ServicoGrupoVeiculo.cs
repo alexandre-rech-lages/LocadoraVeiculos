@@ -1,11 +1,6 @@
 ﻿using FluentValidation.Results;
 using LocadoraVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraVeiculos.Infra.BancoDados.ModuloGrupoVeiculos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos
 {
@@ -32,7 +27,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos
         {
             ValidadorGrupoVeiculos validador = new ValidadorGrupoVeiculos();
 
-            return validador.Validate(arg); 
+            return validador.Validate(arg);
         }
 
         public ValidationResult Editar(GrupoVeiculos arg)

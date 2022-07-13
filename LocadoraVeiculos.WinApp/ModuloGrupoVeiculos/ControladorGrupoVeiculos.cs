@@ -1,6 +1,7 @@
 ﻿using LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos;
 using LocadoraVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraVeiculos.WinApp.Compartilhado;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -12,7 +13,7 @@ namespace LocadoraVeiculos.WinApp.ModuloGrupoVeiculos
         private ListagemGrupoVeiculosControl listagemGrupoVeiculos;
         private readonly ServicoGrupoVeiculo servicoGrupoVeiculo;
 
-        public ControladorGrupoVeiculos(IRepositorioGrupoVeiculos repositorioGrupoVeiculos, 
+        public ControladorGrupoVeiculos(IRepositorioGrupoVeiculos repositorioGrupoVeiculos,
             ServicoGrupoVeiculo servicoGrupoVeiculo)
         {
             this.repositorioGrupoVeiculos = repositorioGrupoVeiculos;
@@ -22,52 +23,57 @@ namespace LocadoraVeiculos.WinApp.ModuloGrupoVeiculos
         public override void Inserir()
         {
             var tela = new TelaCadastroGrupoVeiculos();
+
             tela.Grupo = new GrupoVeiculos();
+
             tela.GravarRegistro = servicoGrupoVeiculo.Inserir;
 
-            DialogResult resultado = tela.ShowDialog();
-            if (resultado == DialogResult.OK)
+            if (tela.ShowDialog() == DialogResult.OK)
+            {
                 CarregarGrupos();
+            }
         }
 
         public override void Editar()
         {
-            GrupoVeiculos grupoVeiculosSelecionado = ObtemGrupoVeiculosSelecionado();
+            var id = listagemGrupoVeiculos.ObtemIdGrupoVeiculosSelecionado();
 
-            if (grupoVeiculosSelecionado == null)
+            if (id == Guid.Empty)
             {
                 MessageBox.Show("Selecione um grupo de veículos primeiro",
-                "Edição de Grupo de Veículos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    "Edição de Grupo de Veículos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
+            var grupoVeiculosSelecionado = repositorioGrupoVeiculos.SelecionarPorId(id);
+
             var tela = new TelaCadastroGrupoVeiculos();
 
-            tela.Grupo = grupoVeiculosSelecionado;
+            tela.Grupo = grupoVeiculosSelecionado.Clone();
 
             tela.GravarRegistro = servicoGrupoVeiculo.Editar;
 
-            DialogResult resultado = tela.ShowDialog();
-
-            if (resultado == DialogResult.OK)
+            if (tela.ShowDialog() == DialogResult.OK)
+            {
                 CarregarGrupos();
+            }
         }
 
         public override void Excluir()
         {
-            GrupoVeiculos grupoVeiculosSelecionado = ObtemGrupoVeiculosSelecionado();
+            var id = listagemGrupoVeiculos.ObtemIdGrupoVeiculosSelecionado();
 
-            if (grupoVeiculosSelecionado == null)
+            if (id == Guid.Empty)
             {
                 MessageBox.Show("Selecione um grupo de veículos primeiro",
-                "Exclusão de Grupo de Veículos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    "Exclusão de Grupo de Veículos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
-            DialogResult resultado = MessageBox.Show("Deseja realmente excluir o grupo de veículos?",
-            "Exclusão de Grupo de Veículos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            GrupoVeiculos grupoVeiculosSelecionado = repositorioGrupoVeiculos.SelecionarPorId(id);
 
-            if (resultado == DialogResult.OK)
+            if (MessageBox.Show("Deseja realmente excluir o grupo de veículos?", "Exclusão de Grupo de Veículos",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 repositorioGrupoVeiculos.Excluir(grupoVeiculosSelecionado);
                 CarregarGrupos();
@@ -89,8 +95,6 @@ namespace LocadoraVeiculos.WinApp.ModuloGrupoVeiculos
             return listagemGrupoVeiculos;
         }
 
-        #region MÉTODOS PRIVADOS
-
         private void CarregarGrupos()
         {
             List<GrupoVeiculos> grupos = repositorioGrupoVeiculos.SelecionarTodos();
@@ -99,14 +103,5 @@ namespace LocadoraVeiculos.WinApp.ModuloGrupoVeiculos
 
             TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {grupos.Count} grupo(s) de veículos");
         }
-
-        private GrupoVeiculos ObtemGrupoVeiculosSelecionado()
-        {
-            var id = listagemGrupoVeiculos.ObtemIdGrupoVeiculosSelecionado();
-
-            return repositorioGrupoVeiculos.SelecionarPorId(id);
-        }
-
-        #endregion
     }
 }

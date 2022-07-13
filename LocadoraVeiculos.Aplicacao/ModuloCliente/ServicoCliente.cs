@@ -1,8 +1,6 @@
 ﻿using FluentValidation.Results;
 using LocadoraVeiculos.Dominio.ModuloCliente;
 using LocadoraVeiculos.Infra.BancoDados.ModuloCliente;
-using System;
-using static LocadoraVeiculos.Infra.BancoDados.ModuloCliente.RepositorioClienteEmBancoDados;
 
 namespace LocadoraVeiculos.Aplicacao.ModuloCliente
 {
@@ -44,25 +42,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCliente
             return resultadoValidacao;
         }
 
-        public ValidationResult Excluir(Cliente arg)
-        {
-            ValidationResult resultadoValidacao = new ValidationResult();
 
-            try
-            {
-                repositorioCliente.Excluir(arg);
-            }
-            catch (RegistroNaoPodeSerExcluidoException ex)
-            {
-                resultadoValidacao.Errors.Add(new ValidationFailure("", ex.Message));
-            }            
-            catch (Exception)
-            {
-                resultadoValidacao.Errors.Add(new ValidationFailure("", "Erro desconhecido"));
-            }
-
-            return resultadoValidacao;
-        }
 
     }
 }

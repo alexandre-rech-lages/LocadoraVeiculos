@@ -20,51 +20,23 @@ namespace LocadoraVeiculos.WinApp.ModuloFuncionario
             set
             {
                 funcionario = value;
-                PreencherDadosNaTela();
+
+                txtNome.Text = funcionario.Nome;
+                txtLogin.Text = funcionario.Usuario;
+                txtSenha.Text = funcionario.Senha;
+                txtSalario.Text = funcionario.Salario.ToString();
+                dateTimePickerDataAdmissao.Value = funcionario.DataAdmissao;
+
+                if (funcionario.EhAdmin == true)
+                    checkBoxIsAdmin.Checked = true;
+                else
+                    checkBoxIsAdmin.Checked = false;
             }
         }
 
         public Func<Funcionario, ValidationResult> GravarRegistro { get; set; }
 
-
         private void btnGravar_Click(object sender, EventArgs e)
-        {
-            ObterDadosTela();
-
-            var resultadoValidacao = GravarRegistro(funcionario);
-
-            if (resultadoValidacao.IsValid == false)
-            {
-                string erro = resultadoValidacao.Errors[0].ErrorMessage;
-
-                TelaPrincipalForm.Instancia.AtualizarRodape(erro);
-
-                DialogResult = DialogResult.None;
-            }
-        }
-
-        #region MÉTODOS PRIVADOS
-
-        private void DefinirDataAdmissaoMaxima()
-        {
-            dateTimePickerDataAdmissao.MaxDate = DateTime.Today;
-        }
-
-        private void PreencherDadosNaTela()
-        {
-            txtNome.Text = funcionario.Nome;
-            txtLogin.Text = funcionario.Usuario;
-            txtSenha.Text = funcionario.Senha;
-            txtSalario.Text = funcionario.Salario.ToString();
-            dateTimePickerDataAdmissao.Value = funcionario.DataAdmissao;
-
-            if (funcionario.EhAdmin == true)
-                checkBoxIsAdmin.Checked = true;
-            else
-                checkBoxIsAdmin.Checked = false;
-        }
-
-        private void ObterDadosTela()
         {
             funcionario.Nome = txtNome.Text;
             funcionario.Usuario = txtLogin.Text;
@@ -85,9 +57,20 @@ namespace LocadoraVeiculos.WinApp.ModuloFuncionario
                 funcionario.EhAdmin = true;
             else
                 funcionario.EhAdmin = false;
+
+            var resultadoValidacao = GravarRegistro(funcionario);
+
+            if (resultadoValidacao.IsValid == false)
+            {
+                string erro = resultadoValidacao.Errors[0].ErrorMessage;
+
+                TelaPrincipalForm.Instancia.AtualizarRodape(erro);
+
+                DialogResult = DialogResult.None;
+            }
         }
 
-        #endregion
+
 
     }
 }

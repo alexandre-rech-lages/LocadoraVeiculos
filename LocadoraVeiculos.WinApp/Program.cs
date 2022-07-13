@@ -1,8 +1,5 @@
 using LocadoraVeiculos.Infra.Logging;
-using Microsoft.Extensions.Configuration;
-using Serilog;
 using System;
-using System.IO;
 using System.Windows.Forms;
 
 namespace LocadoraVeiculos.WinApp

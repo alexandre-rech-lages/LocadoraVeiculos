@@ -116,6 +116,6 @@ namespace LocadoraVeiculos.Infra.BancoDados.ModuloFuncionario
         {
             return SelecionarPorParametro(sqlSelecionarPorUsuario, new SqlParameter("USUARIO", usuario));
         }
-       
+
     }
 }
