@@ -28,7 +28,6 @@ namespace LocadoraVeiculos.WinApp.ModuloCliente
                 new DataGridViewTextBoxColumn { DataPropertyName = "tipo", HeaderText = "Tipo"},
                 new DataGridViewTextBoxColumn { DataPropertyName = "Cpf", HeaderText = "CPF"},
                 new DataGridViewTextBoxColumn { DataPropertyName = "Cnpj", HeaderText = "CNPJ"},
-                new DataGridViewTextBoxColumn { DataPropertyName = "Cnh", HeaderText = "CNH"},
                 new DataGridViewTextBoxColumn { DataPropertyName = "Estado", HeaderText = "Estado"},
                 new DataGridViewTextBoxColumn { DataPropertyName = "Cidade", HeaderText = "Cidade"},
                 new DataGridViewTextBoxColumn { DataPropertyName = "Bairro", HeaderText = "Bairro"},
