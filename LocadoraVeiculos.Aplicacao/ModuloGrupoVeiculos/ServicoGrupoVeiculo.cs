@@ -72,7 +72,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos
 
             try
             {
-                repositorioGrupoVeiculo.Inserir(grupoVeiculo);
+                repositorioGrupoVeiculo.Editar(grupoVeiculo);
 
                 Log.Logger.Information("Grupo de Veículo {GrupoVeiculoId} editado com sucesso", grupoVeiculo.Id);
 
