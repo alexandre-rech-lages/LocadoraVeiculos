@@ -85,7 +85,7 @@ namespace LocadoraVeiculos.Infra.BancoDados.Tests.ModuloTaxa
             Assert.AreEqual(taxa, registroEncontrado);
         }
 
-        //[TestMethod]
+        [TestMethod]
         public void Deve_selecionar_todos_os_registros()
         {
             //arrange

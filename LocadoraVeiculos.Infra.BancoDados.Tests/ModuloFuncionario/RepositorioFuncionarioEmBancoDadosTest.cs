@@ -67,7 +67,7 @@ namespace LocadoraVeiculos.Infra.BancoDados.Tests.ModuloFuncionario
             Assert.IsNull(registroEncontrado);
         }
 
-        //[TestMethod]
+        [TestMethod]
         public void Deve_selecionar_todos_os_registros()
         {
             //arrange
