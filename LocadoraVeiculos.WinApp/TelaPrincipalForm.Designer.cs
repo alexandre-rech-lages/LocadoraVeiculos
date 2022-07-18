@@ -34,6 +34,7 @@
             this.funcionariosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grupoVeiculosMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.taxasMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.condutoresMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolbox = new System.Windows.Forms.ToolStrip();
             this.btnInserir = new System.Windows.Forms.ToolStripButton();
             this.btnEditar = new System.Windows.Forms.ToolStripButton();
@@ -42,7 +43,6 @@
             this.statusStripRodape = new System.Windows.Forms.StatusStrip();
             this.labelRodape = new System.Windows.Forms.ToolStripStatusLabel();
             this.panelRegistros = new System.Windows.Forms.Panel();
-            this.condutoresMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.toolbox.SuspendLayout();
             this.statusStripRodape.SuspendLayout();
@@ -105,6 +105,14 @@
             this.taxasMenuItem.Text = "Taxas";
             this.taxasMenuItem.ToolTipText = "Taxas";
             this.taxasMenuItem.Click += new System.EventHandler(this.taxasMenuItem_Click);
+            // 
+            // condutoresMenuItem
+            // 
+            this.condutoresMenuItem.Name = "condutoresMenuItem";
+            this.condutoresMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.condutoresMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.condutoresMenuItem.Text = "Condutores";
+            this.condutoresMenuItem.Click += new System.EventHandler(this.condutoresMenuItem_Click);
             // 
             // toolbox
             // 
@@ -189,13 +197,6 @@
             this.panelRegistros.Name = "panelRegistros";
             this.panelRegistros.Size = new System.Drawing.Size(800, 363);
             this.panelRegistros.TabIndex = 3;
-            // 
-            // condutoresMenuItem
-            // 
-            this.condutoresMenuItem.Name = "condutoresMenuItem";
-            this.condutoresMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.condutoresMenuItem.Text = "Condutores";
-            this.condutoresMenuItem.Click += new System.EventHandler(this.condutoresMenuItem_Click);
             // 
             // TelaPrincipalForm
             // 

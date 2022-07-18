@@ -39,13 +39,13 @@ namespace Locadora_Veiculos.Dominio.Tests.ModuloCondutor
             Cliente cliente = GetClienteFisico();
 
             Condutor cond1 = new Condutor("j", "(49) 98888-9999", "joao@gmail.com", "013.987.765-09", "123456789",
-                new DateTime(2025, 12, 28),  cliente);
+                new DateTime(2025, 12, 28), cliente);
 
             Condutor cond2 = new Condutor("jh", "(49) 98888-9999", "joao@gmail.com", "013.987.765-09", "123456789",
-                new DateTime(2025, 12, 28),  cliente);
+                new DateTime(2025, 12, 28), cliente);
 
             Condutor cond3 = new Condutor("João da Silva", "(49) 98888-9999", "joao@gmail.com", "013.987.765-09", "123456789",
-                new DateTime(2025, 12, 28),  cliente);
+                new DateTime(2025, 12, 28), cliente);
 
             var validador = new ValidadorCondutor();
 
@@ -64,10 +64,10 @@ namespace Locadora_Veiculos.Dominio.Tests.ModuloCondutor
             Cliente cliente = GetClienteFisico();
 
             Condutor cond1 = new Condutor("joão", "", "joao@gmail.com", "013.987.765-09", "123456789",
-                new DateTime(2025, 12, 28),  cliente);
+                new DateTime(2025, 12, 28), cliente);
 
             Condutor cond2 = new Condutor("joão", null, "joao@gmail.com", "013.987.765-09", "123456789",
-                new DateTime(2025, 12, 28),  cliente);
+                new DateTime(2025, 12, 28), cliente);
 
             var validador = new ValidadorCondutor();
 
@@ -84,7 +84,7 @@ namespace Locadora_Veiculos.Dominio.Tests.ModuloCondutor
             Cliente cliente = GetClienteFisico();
 
             Condutor cond1 = new Condutor("joão", "(49) 988-99", "joao@gmail.com", "013.987.765-09", "123456789",
-                new DateTime(2025, 12, 28),  cliente);
+                new DateTime(2025, 12, 28), cliente);
 
             var validador = new ValidadorCondutor();
 
@@ -99,10 +99,10 @@ namespace Locadora_Veiculos.Dominio.Tests.ModuloCondutor
             Cliente cliente = GetClienteFisico();
 
             Condutor cond1 = new Condutor("João da Silva", "(49) 98888-9999", "", "013.987.765-09", "123456789",
-                new DateTime(2025, 12, 28),  cliente);
+                new DateTime(2025, 12, 28), cliente);
 
             Condutor cond2 = new Condutor("João da Silva", "(49) 98888-9999", null, "013.987.765-09", "123456789",
-                new DateTime(2025, 12, 28),  cliente);
+                new DateTime(2025, 12, 28), cliente);
 
             var validador = new ValidadorCondutor();
 
@@ -119,10 +119,10 @@ namespace Locadora_Veiculos.Dominio.Tests.ModuloCondutor
             Cliente cliente = GetClienteJuridico();
 
             Condutor cond1 = new Condutor("João da Silva", "(49) 98888-9999", "joao@gmail.com", "", "123456789",
-                new DateTime(2025, 12, 28),  cliente);
+                new DateTime(2025, 12, 28), cliente);
 
             Condutor cond2 = new Condutor("João da Silva", "(49) 98888-9999", "joao@gmail.com", null, "123456789",
-                new DateTime(2025, 12, 28),  cliente);
+                new DateTime(2025, 12, 28), cliente);
 
             var validador = new ValidadorCondutor();
 
@@ -139,10 +139,10 @@ namespace Locadora_Veiculos.Dominio.Tests.ModuloCondutor
             Cliente cliente = GetClienteJuridico();
 
             Condutor cond1 = new Condutor("João da Silva", "(49) 98888-9999", "joao@gmail.com", "0987", "123456789",
-                new DateTime(2025, 12, 28),  cliente);
+                new DateTime(2025, 12, 28), cliente);
 
             Condutor cond2 = new Condutor("João da Silva", "(49) 98888-9999", "joao@gmail.com", "gdfgsdf", "123456789",
-                new DateTime(2025, 12, 28),  cliente);
+                new DateTime(2025, 12, 28), cliente);
 
             var validador = new ValidadorCondutor();
 
@@ -159,10 +159,10 @@ namespace Locadora_Veiculos.Dominio.Tests.ModuloCondutor
             Cliente cliente = GetClienteFisico();
 
             Condutor cond1 = new Condutor("João da Silva", "(49) 98888-9999", "joao@gmail.com", "013.987.765-09", "",
-                new DateTime(2025, 12, 28),  cliente);
+                new DateTime(2025, 12, 28), cliente);
 
             Condutor cond2 = new Condutor("João da Silva", "(49) 98888-9999", "joao@gmail.com", "013.987.765-09", null,
-                new DateTime(2025, 12, 28),  cliente);
+                new DateTime(2025, 12, 28), cliente);
 
             var validador = new ValidadorCondutor();
 
@@ -179,10 +179,10 @@ namespace Locadora_Veiculos.Dominio.Tests.ModuloCondutor
             Cliente cliente = GetClienteJuridico();
 
             Condutor cond1 = new Condutor("João da Silva", "(49) 98888-9999", "joao@gmail.com", "013.987.765-09", "1234",
-                new DateTime(2025, 12, 28),  cliente);
+                new DateTime(2025, 12, 28), cliente);
 
             Condutor cond2 = new Condutor("João da Silva", "(49) 98888-9999", "joao@gmail.com", "013.987.765-09", "xmnjh8",
-                new DateTime(2025, 12, 28),  cliente);
+                new DateTime(2025, 12, 28), cliente);
 
             var validador = new ValidadorCondutor();
 
@@ -199,7 +199,7 @@ namespace Locadora_Veiculos.Dominio.Tests.ModuloCondutor
             Cliente cliente = null;
 
             Condutor cond1 = new Condutor("João da Silva", "(49) 98888-9999", "joao@gmail.com", "013.987.765-09", "123456789",
-                new DateTime(2025, 12, 28),  cliente);
+                new DateTime(2025, 12, 28), cliente);
 
             var validador = new ValidadorCondutor();
 
@@ -214,13 +214,13 @@ namespace Locadora_Veiculos.Dominio.Tests.ModuloCondutor
             Cliente cliente = GetClienteFisico();
 
             Condutor cond1 = new Condutor("João da Silva", "(49) 98888-9999", "joao@gmail.com", "013.987.765-09", "123456789",
-                DateTime.Today,  cliente);
+                DateTime.Today, cliente);
 
             Condutor cond2 = new Condutor("João da Silva", "(49) 98888-9999", "joao@gmail.com", "013.987.765-09", "123456789",
-                new DateTime(2020, 12, 28),  cliente);
+                new DateTime(2020, 12, 28), cliente);
 
             Condutor cond3 = new Condutor("João da Silva", "(49) 98888-9999", "joao@gmail.com", "013.987.765-09", "123456789",
-                new DateTime(2030, 12, 28),  cliente);
+                new DateTime(2030, 12, 28), cliente);
 
             var validador = new ValidadorCondutor();
 

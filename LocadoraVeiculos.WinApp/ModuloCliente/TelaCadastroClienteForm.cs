@@ -1,5 +1,4 @@
 ﻿using FluentResults;
-using FluentValidation.Results;
 using LocadoraVeiculos.Dominio.ModuloCliente;
 using System;
 using System.Windows.Forms;
@@ -55,7 +54,6 @@ namespace LocadoraVeiculos.WinApp.ModuloCliente
 
             var resultadoValidacao = GravarRegistro(cliente);
 
-            
             if (resultadoValidacao.IsFailed)
             {
                 string erro = resultadoValidacao.Errors[0].Message;

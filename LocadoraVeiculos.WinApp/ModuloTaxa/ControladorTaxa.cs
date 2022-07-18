@@ -1,6 +1,7 @@
 ﻿using LocadoraVeiculos.Aplicacao.ModuloTaxa;
 using LocadoraVeiculos.Dominio.ModuloTaxa;
 using LocadoraVeiculos.WinApp.Compartilhado;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -8,37 +9,49 @@ namespace LocadoraVeiculos.WinApp.ModuloTaxas
 {
     public class ControladorTaxa : ControladorBase
     {
-        private IRepositorioTaxa repositorioTaxa;
-        private ListagemTaxaControl listagemTaxa;
-        private ServicoTaxa servicoTaxa;
+        private ListagemTaxaControl listagemTaxas;
+        private readonly ServicoTaxa servicoTaxa;
 
-        public ControladorTaxa(IRepositorioTaxa repositorioTaxa, ServicoTaxa servicoTaxa)
+        public ControladorTaxa(ServicoTaxa servicoTaxa)
         {
-            this.repositorioTaxa = repositorioTaxa;
             this.servicoTaxa = servicoTaxa;
         }
 
         public override void Inserir()
         {
             var tela = new TelaCadastroTaxa();
+
             tela.Taxa = new Taxa();
+
             tela.GravarRegistro = servicoTaxa.Inserir;
 
-            DialogResult resultado = tela.ShowDialog();
-            if (resultado == DialogResult.OK)
+            if (tela.ShowDialog() == DialogResult.OK)
+            {
                 CarregarTaxas();
+            }
         }
 
         public override void Editar()
         {
-            Taxa taxaSelecionada = ObtemTaxaSelecionada();
+            var id = listagemTaxas.ObtemIdTaxaSelecionada();
 
-            if (taxaSelecionada == null)
+            if (id == Guid.Empty)
             {
                 MessageBox.Show("Selecione uma taxa primeiro",
-                "Edição de Taxa", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    "Edição de Taxa", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
+
+            var resultado = servicoTaxa.SelecionarPorId(id);
+
+            if (resultado.IsFailed)
+            {
+                MessageBox.Show(resultado.Errors[0].Message,
+                    "Edição de Taxa", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var taxaSelecionada = resultado.Value;
 
             var tela = new TelaCadastroTaxa();
 
@@ -46,38 +59,45 @@ namespace LocadoraVeiculos.WinApp.ModuloTaxas
 
             tela.GravarRegistro = servicoTaxa.Editar;
 
-            DialogResult resultado = tela.ShowDialog();
-
-            if (resultado == DialogResult.OK)
+            if (tela.ShowDialog() == DialogResult.OK)
+            {
                 CarregarTaxas();
+            }
         }
 
         public override void Excluir()
         {
-            Taxa taxaSelecionada = ObtemTaxaSelecionada();
+            var id = listagemTaxas.ObtemIdTaxaSelecionada();
 
-            if (taxaSelecionada == null)
+            if (id == Guid.Empty)
             {
                 MessageBox.Show("Selecione uma taxa primeiro",
-                "Exclusão de Taxa", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    "Exclusão de Taxa", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
-            DialogResult resultado = MessageBox.Show("Deseja realmente excluir a taxa?",
-            "Exclusão de Taxa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            var resultado = servicoTaxa.SelecionarPorId(id);
 
-            if (resultado == DialogResult.OK)
+            if (resultado.IsFailed)
             {
-                repositorioTaxa.Excluir(taxaSelecionada);
-                CarregarTaxas();
+                MessageBox.Show(resultado.Errors[0].Message,
+                    "Exclusão de Taxa", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-        }
 
-        private Taxa ObtemTaxaSelecionada()
-        {
-            var id = listagemTaxa.ObtemIdTaxaSelecionada();
+            var taxaSelecionada = resultado.Value;
 
-            return repositorioTaxa.SelecionarPorId(id);
+            if (MessageBox.Show("Deseja realmente excluir a taxa?", "Exclusão de Taxa",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                var resultadoExclusao = servicoTaxa.Excluir(taxaSelecionada);
+
+                if (resultadoExclusao.IsSuccess)
+                    CarregarTaxas();
+                else
+                    MessageBox.Show(resultadoExclusao.Errors[0].Message,
+                        "Exclusão de Taxa", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()
@@ -87,19 +107,31 @@ namespace LocadoraVeiculos.WinApp.ModuloTaxas
 
         public override UserControl ObtemListagem()
         {
-            if (listagemTaxa == null)
-                listagemTaxa = new ListagemTaxaControl();
+            if (listagemTaxas == null)
+                listagemTaxas = new ListagemTaxaControl();
 
             CarregarTaxas();
 
-            return listagemTaxa;
+            return listagemTaxas;
         }
 
         private void CarregarTaxas()
         {
-            List<Taxa> taxas = repositorioTaxa.SelecionarTodos();
-            listagemTaxa.AtualizarRegistros(taxas);
-            TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {taxas.Count} taxa(s)");
+            var resultado = servicoTaxa.SelecionarTodos();
+
+            if (resultado.IsSuccess)
+            {
+                List<Taxa> taxas = resultado.Value;
+
+                listagemTaxas.AtualizarRegistros(taxas);
+
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {taxas.Count} taxa(s)");
+            }
+            else
+            {
+                MessageBox.Show(resultado.Errors[0].Message, "Visualização de Taxas",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

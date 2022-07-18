@@ -151,7 +151,6 @@ namespace LocadoraVeiculos.WinApp
             var repositorioFuncionario = new RepositorioFuncionarioEmBancoDados();
             var repositorioCondutor = new RepositorioCondutorEmBancoDados();
 
-
             var servicoFuncionario = new ServicoFuncionario(repositorioFuncionario);
             var servicoCliente = new ServicoCliente(repositorioCliente);
             var servicoGrupoVeiculo = new ServicoGrupoVeiculo(repositorioGrupoVeiculos);
@@ -161,10 +160,10 @@ namespace LocadoraVeiculos.WinApp
             controladores = new Dictionary<string, ControladorBase>();
 
             controladores.Add("Clientes", new ControladorCliente(servicoCliente));
-            controladores.Add("Grupos de veículos", new ControladorGrupoVeiculos(repositorioGrupoVeiculos, servicoGrupoVeiculo));
-            controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa, servicoTaxa));
+            controladores.Add("Grupos de veículos", new ControladorGrupoVeiculos(servicoGrupoVeiculo));
+            controladores.Add("Taxas", new ControladorTaxa(servicoTaxa));
             controladores.Add("Funcionários", new ControladorFuncionario(servicoFuncionario));
-            controladores.Add("Condutores", new ControladorCondutor(repositorioCondutor, repositorioCliente, servicoCondutor));
+            controladores.Add("Condutores", new ControladorCondutor(servicoCondutor, servicoCliente));
         }
 
 

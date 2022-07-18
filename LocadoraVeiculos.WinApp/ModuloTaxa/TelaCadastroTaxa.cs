@@ -1,4 +1,4 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
 using LocadoraVeiculos.Dominio.ModuloTaxa;
 using System;
 using System.Windows.Forms;
@@ -14,7 +14,7 @@ namespace LocadoraVeiculos.WinApp.ModuloTaxas
             InitializeComponent();
         }
 
-        public Func<Taxa, ValidationResult> GravarRegistro { get; set; }
+        public Func<Taxa, Result<Taxa>> GravarRegistro { get; set; }
 
         public Taxa Taxa
         {
@@ -28,10 +28,11 @@ namespace LocadoraVeiculos.WinApp.ModuloTaxas
                 taxa = value;
                 txtDescricao.Text = taxa.Descricao;
                 numericValor.Value = taxa.Valor;
+
                 if (taxa.TipoCalculo == 0)
                     radioButtonDiario.Checked = true;
-                else radioButtonFixo.Checked = true;
-
+                else
+                    radioButtonFixo.Checked = true;
             }
         }
 
@@ -39,17 +40,25 @@ namespace LocadoraVeiculos.WinApp.ModuloTaxas
         {
             taxa.Descricao = txtDescricao.Text;
             taxa.Valor = numericValor.Value;
-
             taxa.TipoCalculo = (TipoCalculo)(radioButtonDiario.Checked == true ? 0 : 1);
 
             var resultadoValidacao = GravarRegistro(taxa);
-            if (resultadoValidacao.IsValid == false)
+
+            if (resultadoValidacao.IsFailed)
             {
-                string erro = resultadoValidacao.Errors[0].ErrorMessage;
+                string erro = resultadoValidacao.Errors[0].Message;
 
-                TelaPrincipalForm.Instancia.AtualizarRodape(erro);
+                if (erro.StartsWith("Falha no sistema"))
+                {
+                    MessageBox.Show(erro,
+                    "Inserção de Taxa", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    TelaPrincipalForm.Instancia.AtualizarRodape(erro);
 
-                DialogResult = DialogResult.None;
+                    DialogResult = DialogResult.None;
+                }
             }
         }
     }

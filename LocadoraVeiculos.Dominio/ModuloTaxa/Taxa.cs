@@ -1,23 +1,15 @@
 ﻿using LocadoraVeiculos.Dominio.Compartilhado;
-using System;
 
 namespace LocadoraVeiculos.Dominio.ModuloTaxa
 {
     public class Taxa : EntidadeBase<Taxa>
     {
-
-
         public string Descricao { get; set; }
-        public Decimal Valor { get; set; }
+        public decimal Valor { get; set; }
         public TipoCalculo TipoCalculo { get; set; }
-
-
-
-
 
         public Taxa()
         {
-
         }
 
         public Taxa(string descricao, decimal valor, TipoCalculo tipoCalculo)
@@ -26,8 +18,6 @@ namespace LocadoraVeiculos.Dominio.ModuloTaxa
             Valor = valor;
             TipoCalculo = tipoCalculo;
         }
-
-
 
         public override string ToString()
         {

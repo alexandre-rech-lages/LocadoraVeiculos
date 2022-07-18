@@ -1,7 +1,5 @@
 ﻿using LocadoraVeiculos.Dominio.ModuloCliente;
 using LocadoraVeiculos.Infra.BancoDados.Compartilhado;
-using System;
-using System.Data.SqlClient;
 
 namespace LocadoraVeiculos.Infra.BancoDados.ModuloCliente
 {
@@ -91,7 +89,7 @@ namespace LocadoraVeiculos.Infra.BancoDados.ModuloCliente
                 [RUA] CLIENTE_RUA,
                 [NUMERO] CLIENTE_NUMERO
             FROM
-                [TBCLIENTE]";       
+                [TBCLIENTE]";
 
     }
 }

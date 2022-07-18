@@ -104,7 +104,7 @@ namespace LocadoraVeiculos.Dominio.Tests.ModuloCliente
 
             Assert.AreEqual("O campo 'Email' é obrigatório!", resultado1.Errors[0].ErrorMessage);
             Assert.AreEqual("O campo 'Email' é obrigatório!", resultado2.Errors[0].ErrorMessage);
-        }       
+        }
 
         [TestMethod]
         public void Rua_Do_Cliente_Deve_ser_obrigatorio()

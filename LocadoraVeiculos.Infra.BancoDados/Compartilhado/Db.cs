@@ -5,7 +5,7 @@ using System.IO;
 namespace LocadoraVeiculos.Infra.BancoDados.Compartilhado
 {
     public static class Db
-    {        
+    {
         public static void ExecutarSql(string sql)
         {
             var configuracao = new ConfigurationBuilder()

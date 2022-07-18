@@ -21,7 +21,7 @@ namespace LocadoraVeiculos.WinApp.ModuloTaxas
         {
             var colunas = new DataGridViewColumn[] {
 
-                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "ID"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "ID", Visible=false},
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Descricao", HeaderText = "Descrição"},
 

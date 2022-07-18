@@ -85,7 +85,7 @@ namespace LocadoraVeiculos.Infra.BancoDados.Compartilhado
                     throw new NaoPodeExcluirEsteRegistroException(ex);
 
                 throw;
-            }           
+            }
         }
 
         public virtual T SelecionarPorId(Guid id)
@@ -153,5 +153,5 @@ namespace LocadoraVeiculos.Infra.BancoDados.Compartilhado
 
     }
 
-    
+
 }

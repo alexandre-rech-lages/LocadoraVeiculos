@@ -1,4 +1,4 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
 using LocadoraVeiculos.Dominio.ModuloCliente;
 using LocadoraVeiculos.Dominio.ModuloCondutor;
 using LocadoraVeiculos.WinApp;
@@ -54,14 +54,7 @@ namespace Locadora_Veiculos.WinApp.ModuloCondutor
             }
         }
 
-        public Func<Condutor, ValidationResult> GravarRegistro { get; set; }
-
-
-
-        private void btnLimpar_Click(object sender, EventArgs e)
-        {
-            LimparTodosOsCampos();
-        }
+        public Func<Condutor, Result<Condutor>> GravarRegistro { get; set; }
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
@@ -77,13 +70,21 @@ namespace Locadora_Veiculos.WinApp.ModuloCondutor
 
             var resultadoValidacao = GravarRegistro(condutor);
 
-            if (resultadoValidacao.IsValid == false)
+            if (resultadoValidacao.IsFailed)
             {
-                string erro = resultadoValidacao.Errors[0].ErrorMessage;
+                string erro = resultadoValidacao.Errors[0].Message;
 
-                TelaPrincipalForm.Instancia.AtualizarRodape(erro);
+                if (erro.StartsWith("Falha no sistema"))
+                {
+                    MessageBox.Show(erro,
+                    "Inserção de Condutores", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    TelaPrincipalForm.Instancia.AtualizarRodape(erro);
 
-                DialogResult = DialogResult.None;
+                    DialogResult = DialogResult.None;
+                }
             }
         }
 
@@ -181,17 +182,5 @@ namespace Locadora_Veiculos.WinApp.ModuloCondutor
             txtTelefone.Enabled = true;
             txtCpf.Enabled = true;
         }
-
-        private void LimparTodosOsCampos()
-        {
-            comboBoxClientes.SelectedIndex = -1;
-            checkBoxClienteCondutor.Checked = false;
-            LimparCamposDeIdentificacao();
-
-            txtCnh.Clear();
-            dateTimePickerDataValidadeCnh.Value = DateTime.Today;
-        }
-
-
     }
 }

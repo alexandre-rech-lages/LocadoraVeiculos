@@ -2,7 +2,7 @@
 
 namespace LocadoraVeiculos.Dominio.ModuloGrupoVeiculos
 {
-    public interface IRepositorioGrupoVeiculos : IRepositorio<GrupoVeiculos>
+    public interface IRepositorioGrupoVeiculos : IRepositorio<GrupoVeiculo>
     {
     }
 }

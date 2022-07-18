@@ -107,21 +107,21 @@ namespace LocadoraVeiculos.Infra.BancoDados.Tests.ModuloGrupoVeiculos
 
         #region MÉTODOS PRIVADOS
 
-        private GrupoVeiculos NovoGrupoVeiculos()
+        private GrupoVeiculo NovoGrupoVeiculos()
         {
-            var g = new GrupoVeiculos();
+            var g = new GrupoVeiculo();
             g.Nome = "SUV";
 
             return g;
         }
 
-        private List<GrupoVeiculos> NovosGruposVeiculos()
+        private List<GrupoVeiculo> NovosGruposVeiculos()
         {
-            var g1 = new GrupoVeiculos("SUV");
-            var g2 = new GrupoVeiculos("Esportivo");
-            var g3 = new GrupoVeiculos("PCD");
+            var g1 = new GrupoVeiculo("SUV");
+            var g2 = new GrupoVeiculo("Esportivo");
+            var g3 = new GrupoVeiculo("PCD");
 
-            var lista = new List<GrupoVeiculos>();
+            var lista = new List<GrupoVeiculo>();
             lista.Add(g1);
             lista.Add(g2);
             lista.Add(g3);

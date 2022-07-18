@@ -2,14 +2,14 @@
 
 namespace LocadoraVeiculos.Dominio.ModuloGrupoVeiculos
 {
-    public class GrupoVeiculos : EntidadeBase<GrupoVeiculos>
+    public class GrupoVeiculo : EntidadeBase<GrupoVeiculo>
     {
-        public GrupoVeiculos()
+        public GrupoVeiculo()
         {
 
         }
 
-        public GrupoVeiculos(string nome)
+        public GrupoVeiculo(string nome)
         {
             Nome = nome;
         }
@@ -23,7 +23,7 @@ namespace LocadoraVeiculos.Dominio.ModuloGrupoVeiculos
 
         public override bool Equals(object obj)
         {
-            GrupoVeiculos g = obj as GrupoVeiculos;
+            GrupoVeiculo g = obj as GrupoVeiculo;
 
             if (g == null)
                 return false;
@@ -33,9 +33,9 @@ namespace LocadoraVeiculos.Dominio.ModuloGrupoVeiculos
                 g.Nome.Equals(Nome);
         }
 
-        public GrupoVeiculos Clone()
+        public GrupoVeiculo Clone()
         {
-            return MemberwiseClone() as GrupoVeiculos;
+            return MemberwiseClone() as GrupoVeiculo;
         }
     }
 }

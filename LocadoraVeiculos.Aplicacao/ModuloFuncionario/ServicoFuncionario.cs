@@ -12,6 +12,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
     public class ServicoFuncionario
     {
         private IRepositorioFuncionario repositorioFuncionario;
+
         public ServicoFuncionario(IRepositorioFuncionario repositorioFuncionario)
         {
             this.repositorioFuncionario = repositorioFuncionario;
@@ -49,7 +50,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
                 Log.Logger.Error(ex, msgErro + "{FuncionarioId}", funcionario.Id);
 
                 return Result.Fail(msgErro);
-            }            
+            }
         }
 
         public Result<Funcionario> Editar(Funcionario funcionario)
@@ -182,7 +183,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
                    funcionarioEncontrado.Usuario == funcionario.Usuario &&
                    funcionarioEncontrado.Id != funcionario.Id;
         }
-        
+
         #endregion
     }
 }

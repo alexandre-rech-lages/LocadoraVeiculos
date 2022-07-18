@@ -1,10 +1,11 @@
 ﻿using LocadoraVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraVeiculos.Infra.BancoDados.Compartilhado;
+using System;
 
 namespace LocadoraVeiculos.Infra.BancoDados.ModuloGrupoVeiculos
 {
     public class RepositorioGrupoVeiculosEmBancoDados :
-        RepositorioBase<GrupoVeiculos, MapeadorGrupoVeiculos>,
+        RepositorioBase<GrupoVeiculo, MapeadorGrupoVeiculos>,
         IRepositorioGrupoVeiculos
     {
         protected override string sqlInserir =>
@@ -45,6 +46,9 @@ namespace LocadoraVeiculos.Infra.BancoDados.ModuloGrupoVeiculos
             FROM
                 [TBGRUPOVEICULOS]";
 
-
+        public GrupoVeiculo SelecionarGrupoVeiculoPorNome(string nome)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

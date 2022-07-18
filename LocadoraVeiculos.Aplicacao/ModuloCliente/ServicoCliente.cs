@@ -114,7 +114,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCliente
 
                 Log.Logger.Error(ex, msgErro);
 
-                return Result.Fail(msgErro);
+                return Result.Fail(new Error(msgErro));
             }
         }
 

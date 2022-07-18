@@ -10,10 +10,10 @@ namespace LocadoraVeiculos.Dominio.Tests.ModuloGrupoVeiculos
         public void Nome_deve_ser_obrigatorio()
         {
             //arrange
-            var grupoVeiculos = new GrupoVeiculos();
+            var grupoVeiculos = new GrupoVeiculo();
             grupoVeiculos.Nome = null;
 
-            ValidadorGrupoVeiculos validador = new();
+            ValidadorGrupoVeiculo validador = new();
 
             //action
             var resultado = validador.Validate(grupoVeiculos);
@@ -26,10 +26,10 @@ namespace LocadoraVeiculos.Dominio.Tests.ModuloGrupoVeiculos
         public void Nome_nao_deve_ter_caracteres_especiais()
         {
             //arrange
-            var grupoVeiculos = new GrupoVeiculos();
+            var grupoVeiculos = new GrupoVeiculo();
             grupoVeiculos.Nome = "Uber#@";
 
-            ValidadorGrupoVeiculos validador = new();
+            ValidadorGrupoVeiculo validador = new();
 
             //action
             var resultado = validador.Validate(grupoVeiculos);

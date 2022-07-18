@@ -2,9 +2,9 @@
 
 namespace LocadoraVeiculos.Dominio.ModuloGrupoVeiculos
 {
-    public class ValidadorGrupoVeiculos : AbstractValidator<GrupoVeiculos>
+    public class ValidadorGrupoVeiculo : AbstractValidator<GrupoVeiculo>
     {
-        public ValidadorGrupoVeiculos()
+        public ValidadorGrupoVeiculo()
         {
             RuleFor(x => x.Nome)
                 .NotEmpty().WithMessage("O campo 'Nome' é obrigatório!")
