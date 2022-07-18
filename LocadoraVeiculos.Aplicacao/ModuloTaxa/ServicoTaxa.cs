@@ -9,11 +9,20 @@ using System.Linq;
 
 namespace LocadoraVeiculos.Aplicacao.ModuloTaxa
 {
-    public class ServicoTaxa
+    public interface IServicoTaxa
     {
-        private RepositorioTaxaEmBancoDados repositorioTaxa;
+        Result<Taxa> Editar(Taxa taxa);
+        Result Excluir(Taxa taxa);
+        Result<Taxa> Inserir(Taxa taxa);
+        Result<Taxa> SelecionarPorId(Guid id);
+        Result<List<Taxa>> SelecionarTodos();
+    }
 
-        public ServicoTaxa(RepositorioTaxaEmBancoDados repositorioTaxa)
+    public class ServicoTaxa : IServicoTaxa
+    {
+        private IRepositorioTaxa repositorioTaxa;
+
+        public ServicoTaxa(IRepositorioTaxa repositorioTaxa)
         {
             this.repositorioTaxa = repositorioTaxa;
         }

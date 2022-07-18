@@ -9,11 +9,20 @@ using System.Linq;
 
 namespace LocadoraVeiculos.Aplicacao.ModuloCliente
 {
-    public class ServicoCliente
+    public interface IServicoCliente
     {
-        private RepositorioClienteEmBancoDados repositorioCliente;
+        Result<Cliente> Editar(Cliente cliente);
+        Result Excluir(Cliente cliente);
+        Result<Cliente> Inserir(Cliente cliente);
+        Result<Cliente> SelecionarPorId(Guid id);
+        Result<List<Cliente>> SelecionarTodos();
+    }
 
-        public ServicoCliente(RepositorioClienteEmBancoDados repositorioCliente)
+    public class ServicoCliente : IServicoCliente
+    {
+        private IRepositorioCliente repositorioCliente;
+
+        public ServicoCliente(IRepositorioCliente repositorioCliente)
         {
             this.repositorioCliente = repositorioCliente;
         }

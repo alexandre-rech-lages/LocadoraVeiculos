@@ -10,9 +10,9 @@ namespace LocadoraVeiculos.WinApp.ModuloGrupoVeiculos
     public class ControladorGrupoVeiculos : ControladorBase
     {
         private ListagemGrupoVeiculosControl listagemGrupoVeiculos;
-        private readonly ServicoGrupoVeiculo servicoGrupoVeiculo;
+        private readonly IServicoGrupoVeiculo servicoGrupoVeiculo;
 
-        public ControladorGrupoVeiculos(ServicoGrupoVeiculo servicoGrupoVeiculo)
+        public ControladorGrupoVeiculos(IServicoGrupoVeiculo servicoGrupoVeiculo)
         {
             this.servicoGrupoVeiculo = servicoGrupoVeiculo;
         }

@@ -13,10 +13,10 @@ namespace Locadora_Veiculos.WinApp.ModuloCondutor
     public class ControladorCondutor : ControladorBase
     {
         private ListagemCondutoresControl listagemCondutores;
-        private readonly ServicoCliente servicoCliente;
-        private readonly ServicoCondutor servicoCondutor;
+        private readonly IServicoCliente servicoCliente;
+        private readonly IServicoCondutor servicoCondutor;
 
-        public ControladorCondutor(ServicoCondutor servicoCondutor, ServicoCliente servicoCliente)
+        public ControladorCondutor(IServicoCondutor servicoCondutor, IServicoCliente servicoCliente)
         {
             this.servicoCondutor = servicoCondutor;
             this.servicoCliente = servicoCliente;

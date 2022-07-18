@@ -9,11 +9,20 @@ using System.Linq;
 
 namespace LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos
 {
-    public class ServicoGrupoVeiculo
+    public interface IServicoGrupoVeiculo
     {
-        private RepositorioGrupoVeiculosEmBancoDados repositorioGrupoVeiculo;
+        Result<GrupoVeiculo> Editar(GrupoVeiculo grupoVeiculo);
+        Result Excluir(GrupoVeiculo grupoVeiculo);
+        Result<GrupoVeiculo> Inserir(GrupoVeiculo grupoVeiculo);
+        Result<GrupoVeiculo> SelecionarPorId(Guid id);
+        Result<List<GrupoVeiculo>> SelecionarTodos();
+    }
 
-        public ServicoGrupoVeiculo(RepositorioGrupoVeiculosEmBancoDados repositorioGrupoVeiculos)
+    public class ServicoGrupoVeiculo : IServicoGrupoVeiculo
+    {
+        private IRepositorioGrupoVeiculos repositorioGrupoVeiculo;
+
+        public ServicoGrupoVeiculo(IRepositorioGrupoVeiculos repositorioGrupoVeiculos)
         {
             this.repositorioGrupoVeiculo = repositorioGrupoVeiculos;
         }

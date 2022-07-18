@@ -20,8 +20,6 @@ namespace Locadora_Veiculos.WinApp.ModuloCondutor
             this.clientes = clientes;
 
             CarregarClientes();
-
-            dateTimePickerDataValidadeCnh.MinDate = DateTime.Today;
         }
 
         public Condutor Condutor
