@@ -10,9 +10,9 @@ namespace LocadoraVeiculos.WinApp.ModuloCliente
     public class ControladorCliente : ControladorBase
     {
         private ListagemClientesControl listagemClientes;
-        private readonly IServicoCliente servicoCliente;
+        private readonly ServicoCliente servicoCliente;
 
-        public ControladorCliente(IServicoCliente servicoCliente)
+        public ControladorCliente(ServicoCliente servicoCliente)
         {
             this.servicoCliente = servicoCliente;
         }

@@ -1,7 +1,6 @@
 ﻿using FluentResults;
 using FluentValidation.Results;
 using LocadoraVeiculos.Dominio.ModuloTaxa;
-using LocadoraVeiculos.Infra.BancoDados.ModuloTaxa;
 using Serilog;
 using System;
 using System.Collections.Generic;

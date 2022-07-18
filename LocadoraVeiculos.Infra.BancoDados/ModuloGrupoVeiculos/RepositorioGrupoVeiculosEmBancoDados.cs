@@ -1,6 +1,5 @@
 ﻿using LocadoraVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraVeiculos.Infra.BancoDados.Compartilhado;
-using System;
 using System.Data.SqlClient;
 
 namespace LocadoraVeiculos.Infra.BancoDados.ModuloGrupoVeiculos
@@ -47,7 +46,7 @@ namespace LocadoraVeiculos.Infra.BancoDados.ModuloGrupoVeiculos
             FROM
                 [TBGRUPOVEICULOS]";
 
-        private string sqlSelecionarPorNome=>
+        private string sqlSelecionarPorNome =>
            @"SELECT 
                 [ID] GRUPOVEICULO_ID,       
                 [NOME] GRUPOVEICULO_NOME

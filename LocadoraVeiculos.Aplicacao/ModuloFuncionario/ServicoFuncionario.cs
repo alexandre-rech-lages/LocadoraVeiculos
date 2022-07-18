@@ -16,7 +16,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
         Result<Funcionario> SelecionarPorId(Guid id);
         Result<List<Funcionario>> SelecionarTodos();
     }
-    
+
     public class ServicoFuncionario : IServicoFuncionario
     {
         private IRepositorioFuncionario repositorioFuncionario;

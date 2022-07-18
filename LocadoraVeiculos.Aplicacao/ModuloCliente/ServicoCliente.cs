@@ -1,7 +1,6 @@
 ﻿using FluentResults;
 using LocadoraVeiculos.Dominio.Compartilhado;
 using LocadoraVeiculos.Dominio.ModuloCliente;
-using LocadoraVeiculos.Infra.BancoDados.ModuloCliente;
 using Serilog;
 using System;
 using System.Collections.Generic;
