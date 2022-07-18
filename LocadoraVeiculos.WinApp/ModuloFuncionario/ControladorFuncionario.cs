@@ -61,7 +61,6 @@ namespace LocadoraVeiculos.WinApp.ModuloFuncionario
 
             if (tela.ShowDialog() == DialogResult.OK)
                 CarregarFuncionarios();
-
         }
 
         public override void Excluir()
@@ -128,8 +127,8 @@ namespace LocadoraVeiculos.WinApp.ModuloFuncionario
             }
             else
             {
-                MessageBox.Show(resultado.Errors[0].Message, "Exclusão de Funcionário",
-                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(resultado.Errors[0].Message, "Visualização de Funcionários",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
